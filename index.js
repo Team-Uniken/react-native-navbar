@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import ViewPropTypes from './lib';
+import { isIphoneX } from 'react-native-iphone-x-helper';
 
 import NavbarButton from './NavbarButton';
 import styles from './styles';
@@ -114,7 +115,8 @@ export default class NavigationBar extends Component {
 
   customizeStatusBar() {
     const { statusBar } = this.props;
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === '
+        ') {
       if (statusBar.style) {
         StatusBar.setBarStyle(statusBar.style);
       }
@@ -145,7 +147,7 @@ export default class NavigationBar extends Component {
 
     if (Platform.OS === 'ios') {
       statusBar = !this.props.statusBar.hidden ?
-        <View style={[styles.statusBar, customStatusBarTintColor]} /> : null;
+        <View style={[styles.statusBar, customStatusBarTintColor,,{height:isIphoneX()?44:20}]} /> : null;
     }
 
     return (
